@@ -7,7 +7,7 @@ namespace Iconic\Dbal;
 use PDO;
 use Psr\Log\LoggerInterface;
 
-abstract class PdoDatabaseManager
+abstract class PdoDatabaseManager implements DatabaseManagerInterface
 {
     protected PDO $connection;
     protected ?LoggerInterface $logger;
