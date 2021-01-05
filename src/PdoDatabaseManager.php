@@ -12,7 +12,7 @@ abstract class PdoDatabaseManager
     protected PDO $connection;
     protected ?LoggerInterface $logger;
 
-    public function execute(string $query, string $class = null, array $parameters = null)
+    public function execute(string $query, string $class = null, array $parameters = null): DatabaseResult
     {
         $now = microtime(true);
         $statement = $this->connection->prepare($query);
