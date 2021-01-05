@@ -19,6 +19,11 @@ class MysqlDatabaseManager extends PdoDatabaseManager
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
-        $this->connection = new PDO("mysql:host=$host;dbname=$database;charset=utf8mb4", $user, $password, $options);
+        try{
+            $this->connection = new PDO("mysql:host=$host;dbname=$database;charset=utf8mb4", $user, $password, $options);
+        }
+        catch (\Exception $exception){
+            throw new \Exception($exception->getMessage() . ': '. json_encode(['host' => $host, 'database' => $database, 'user' => $user, 'password' => $password]));
+        }
     }
 }
