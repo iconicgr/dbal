@@ -28,6 +28,15 @@ class DatabaseResult
         throw new \Exception("$objectName not found.");
     }
 
+    public function objectOrNull()
+    {
+        if ($this->rows > 0) {
+            return $this->results[0];
+        }
+
+        return null;
+    }
+
     public function successOrException()
     {
         if ($this->rows < 1) {
